@@ -1,0 +1,50 @@
+[
+    {
+        "title": "Creative Writing",
+        "age": "Age 8+",
+        "duration": "6 weeks",
+        "description": "Improve storytelling and creative writing.",
+        "price": "\u20b91499",
+        "image": "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+        "title": "Python Programming",
+        "age": "Age 18+",
+        "duration": "3 Months",
+        "price": "\u20b9 999",
+        "image": "https://images.unsplash.com/photo-1649180556628-9ba704115795?w=500&auto=format&fit=crop&q=60",
+        "description": ""
+    },
+    {
+        "title": "Maths Fundamentals",
+        "age": " Age 15+",
+        "duration": "6 Months",
+        "price": "\u20b9 3999",
+        "image": "https://plus.unsplash.com/premium_photo-1724266846347-bd10efdd330e?q=80",
+        "description": "Build strong mathematical foundations to upskill yourself in the field of the data science.\r\n\r\n"
+    },
+    {
+        "title": "Arts & Craft",
+        "age": "Age 10 +",
+        "duration": "6 weeks",
+        "price": "\u20b9 1999",
+        "image": "https://images.unsplash.com/photo-1590853566724-83bc9da30d15?q=80",
+        "description": "Explore your creativity\r\n\r\n"
+    },
+    {
+        "title": "English",
+        "age": "12+",
+        "duration": "3 Months",
+        "price": " Rs 999",
+        "image": "https://images.unsplash.com/photo-1543109740-4bdb38fda756?w=500&auto=format&fit=crop&q=60",
+        "description": "Improve your English"
+    },
+    {
+        "title": "Java Programming",
+        "age": "12",
+        "duration": "3 Months",
+        "price": "Rs 999",
+        "image": "https://images.unsplash.com/photo-1551033406-611cf9a28f67?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8SmF2YSUyMFByb2dyYW1taW5nfGVufDB8fDB8fHww",
+        "description": "Learn Java"
+    }
+]

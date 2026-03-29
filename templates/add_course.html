@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Add Course</title>
+<style>
+body{
+font-family:Arial;
+background:#f4f6f9;
+padding:40px;
+}
+
+form{
+background:white;
+padding:30px;
+width:400px;
+margin:auto;
+border-radius:8px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+input,textarea{
+width:100%;
+padding:10px;
+margin-top:10px;
+margin-bottom:15px;
+}
+
+button{
+background:#0b63c8;
+color:white;
+border:none;
+padding:10px 15px;
+cursor:pointer;
+}
+
+h2{
+text-align:center;
+} </style>
+
+</head>
+
+<body>
+
+<h2>Add New Course</h2>
+
+<form method="POST">
+
+<input type="text" name="title" placeholder="Course Title" required>
+
+<input type="text" name="age" placeholder="Age Group">
+
+<input type="text" name="duration" placeholder="Duration">
+
+<input type="text" name="price" placeholder="Price">
+
+<input type="text" name="image" placeholder="Image URL">
+
+<textarea name="description" placeholder="Course Description"></textarea>
+
+<button type="submit">Add Course</button>
+
+</form>
+
+</body>
+</html>

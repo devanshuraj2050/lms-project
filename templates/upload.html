@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Upload Image</title>
+</head>
+
+<body>
+
+<h2>Upload Gallery Image</h2>
+
+<form method="POST" enctype="multipart/form-data">
+
+<input type="file" name="image">
+
+<br><br>
+
+<button type="submit">Upload</button>
+
+</form>
+
+<br>
+
+<a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+
+</body>
+</html>

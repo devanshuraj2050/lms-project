@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Courses | MDS International School</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* --------------------- Reset & Base --------------------- */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family:"Poppins",sans-serif;
+      background: #f6f8fb;
+      color:#14213d;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+    a{color:inherit;text-decoration:none}
+
+    /* --------------------- Header / Nav --------------------- */
+    header{
+      background: linear-gradient(90deg,#0b63c8 0%, #00499e 100%);
+      color:#fff;
+      padding:2rem 1rem 1.4rem;
+      text-align:center;
+      box-shadow: 0 6px 20px rgba(3,37,76,0.12);
+    }
+    header h1{font-size:2.05rem;letter-spacing:0.3px;margin-bottom:0.25rem}
+    header p{opacity:0.95;font-weight:300}
+
+    nav{
+      background:#063b84;
+      display:flex;
+      justify-content:center;
+      gap:1.25rem;
+      padding:.65rem 1rem;
+      position:sticky;top:0;z-index:20;
+    }
+    nav a{color:#e6f0ff;font-weight:600;padding:.25rem .45rem;border-radius:6px}
+    nav a:hover{background:rgba(255,255,255,0.04);color:#fff}
+
+    main{max-width:1150px;margin:2rem auto;padding:0 1rem}
+
+    /* --------------------- HERO --------------------- */
+    .hero{
+      display:flex;
+      gap:1.25rem;
+      align-items:center;
+      justify-content:space-between;
+      background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
+      padding:1.6rem;
+      border-radius:12px;
+      box-shadow:0 10px 30px rgba(8,34,71,0.05);
+      margin-bottom:1.6rem;
+    }
+    .hero-left{flex:1;min-width:260px}
+    .hero h2{font-size:1.6rem;color:#052a61;margin-bottom:.4rem}
+    .hero p{color:#1f3a66;margin-bottom:1rem}
+    .hero .ctas{display:flex;gap:.8rem;flex-wrap:wrap}
+    .btn-primary{
+      background:#ffb703;color:#06202a;padding:.75rem 1.15rem;border-radius:8px;border:none;font-weight:700;cursor:pointer;box-shadow:0 8px 20px rgba(255,183,3,0.12);
+    }
+    .btn-outline{
+      background:transparent;border:2px solid rgba(6,59,132,0.08);padding:.7rem 1rem;border-radius:8px;color:#063b84;font-weight:700;cursor:pointer;
+    }
+
+    .hero-right{
+      width:360px;max-width:38%;
+      display:flex;justify-content:center;align-items:center;
+    }
+    .card-preview{
+      width:100%;
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:0 12px 30px rgba(8,34,71,0.08);
+      background:linear-gradient(180deg,#fff,#f8fbff);
+      padding:12px;
+    }
+    .card-preview img{width:100%;height:150px;object-fit:cover;border-radius:8px}
+
+    /* --------------------- Course Grid --------------------- */
+    .section-title{color:#08306b;text-align:center;font-size:1.5rem;margin:1.6rem 0;font-weight:700}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:1.25rem;
+      margin-bottom:1.6rem;
+    }
+
+    .course{
+      background:#fff;border-radius:12px;padding:0;overflow:hidden;box-shadow:0 8px 26px rgba(6,36,70,0.06);display:flex;flex-direction:column;transition:transform .22s ease,box-shadow .22s ease;
+    }
+    .course:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(6,36,70,0.12)}
+    .course .thumb{height:140px;overflow:hidden}
+    .course .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+    .course .body{padding:1rem;flex:1;display:flex;flex-direction:column}
+    .course .title{font-weight:700;color:#04224a;margin-bottom:.5rem}
+    .course .meta{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:.9rem}
+    .badge{background:#eef6ff;color:#015aa6;padding:.25rem .5rem;border-radius:999px;font-weight:600;font-size:.82rem}
+    .desc{color:#41536b;font-size:.95rem;margin-bottom:1rem;flex:1}
+    .course .row{display:flex;justify-content:space-between;align-items:center;gap:.5rem}
+    .price{font-weight:800;color:#063b84}
+    .enroll{background:#063b84;color:#fff;padding:.55rem .85rem;border-radius:8px;font-weight:700;border:none;cursor:pointer}
+
+    /* --------------------- Features & Timeline --------------------- */
+    .features{display:flex;gap:1rem;flex-wrap:wrap;margin:1.6rem 0}
+    .feature{
+      background:linear-gradient(180deg,#fff,#fbfeff);
+      padding:1rem;border-radius:10px;flex:1;min-width:200px;box-shadow:0 8px 24px rgba(6,36,70,0.04)
+    }
+    .feature h4{color:#063b84;margin-bottom:.35rem}
+    .timeline{margin:1rem 0;padding-left:0}
+    .step{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1rem}
+    .dot{width:36px;height:36px;border-radius:50%;background:#ffb703;color:#063b84;display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 6px 18px rgba(255,183,3,0.12)}
+    .step .info{flex:1}
+    .step .info h5{font-size:1rem;margin-bottom:.3rem;color:#07214e}
+    .step .info p{color:#41536b;font-size:.92rem}
+
+    /* --------------------- FAQ --------------------- */
+    .faq{margin-top:1.25rem}
+    details{background:#fff;padding:.9rem;border-radius:10px;box-shadow:0 8px 20px rgba(6,36,70,0.04);margin-bottom:.75rem}
+    summary{font-weight:700;cursor:pointer;color:#043165}
+    details p{margin-top:.5rem;color:#475b71}
+
+    /* --------------------- Footer --------------------- */
+    footer{margin-top:2.25rem;padding:1rem;text-align:center;color:#fff;background:#063b84;border-radius:8px}
+
+    /* --------------------- Responsive Tweaks --------------------- */
+    @media(max-width:900px){
+      .hero{flex-direction:column;align-items:stretch}
+      .hero-right{max-width:100%;width:100%}
+      .hero-left{text-align:center}
+    }
+    @media(max-width:520px){
+      .hero h2{font-size:1.2rem}
+      .card-preview img{height:120px}
+      .course .thumb{height:120px}
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>MDS International School</h1>
+    <p>Explore our courses — designed to empower young minds with modern skills</p>
+  </header>
+
+  <nav>
+<a href="{{ url_for('home') }}">Home</a>
+<a href="{{ url_for('gallery') }}">Gallery</a>
+<a href="{{ url_for('courses') }}">Courses</a>
+<a href="{{ url_for('contact') }}">Contact</a>
+<a href="{{ url_for('principal') }}">Principal</a>
+
+</nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Courses hero">
+      <div class="hero-left">
+        <h2>Skills & Learning Programs for every student</h2>
+        <p>Short-term & long-term courses in Computer Science, Arts, Sports and Life Skills. Practical-focused classes, friendly teachers & certificates for all learners.</p>
+
+        <div class="ctas">
+          <a class="btn-primary" href="contact.html">Enroll Now</a>
+          <a class="btn-outline" href="login.html">Admin / Teachers</a>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="card-preview" aria-hidden="true">
+          <img alt="children learning" src="https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?auto=format&fit=crop&w=900&q=80">
+          <div style="padding:.6rem .5rem">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div>
+                <div style="font-weight:800;color:#063b84">Foundation Courses</div>
+                <div style="font-size:.9rem;color:#4b6b8e;margin-top:.25rem">Practical lessons • Small groups</div>
+              </div>
+              <div style="text-align:right">
+                <div style="font-weight:700;color:#063b84">From</div>
+                <div style="font-weight:800;color:#ffb703">₹ 499</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COURSES GRID -->
+    <h3 class="section-title">Popular Courses</h3>
+    <div class="grid">
+
+      {% for course in courses %}
+      
+      <article class="course">
+      
+      <div class="thumb">
+        <img src="{{ course[6] }}" alt="course image">
+      </div>
+      
+      <div class="body">
+      
+      <div class="title">{{ course[1] }}</div>
+      
+      <div class="meta">
+      <div class="badge">{{ course[2] }}</div>
+      <div style="font-size:.88rem;color:#556b86">
+      Duration: {{ course[3] }}
+      </div>
+      </div>
+      
+      <div class="desc">{{ course[5] }}</div>
+      
+      <div class="row" style="margin-top:1rem">
+      <div class="price">{{ course.price }}</div>
+      <a class="enroll" href="{{ url_for('enroll', course_id=loop.index0) }}">Enroll</a>
+      </div>
+      
+      </div>
+      
+      </article>
+      
+      {% endfor %}
+      
+      </div> <!-- end grid -->
+
+    <!-- ---------------- Features & Timeline ---------------- -->
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.4rem">
+      <div class="features" style="flex:1;min-width:280px">
+        <div class="feature">
+          <h4>Why our courses?</h4>
+          <p style="color:#425e80">Small batches, experienced teachers and an emphasis on practical learning — every course includes a certificate and project work.</p>
+        </div>
+        <div class="feature">
+          <h4>What you get</h4>
+          <ul style="margin-top:.6rem;color:#425e80;line-height:1.6">
+            <li>Hands-on assignments</li>
+            <li>Certificate on completion</li>
+            <li>Friendly & safe environment</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="flex:1;min-width:280px">
+        <h3 style="color:#063b84;margin-bottom:.6rem">Course Journey</h3>
+        <div class="timeline" aria-hidden="false">
+          <div class="step">
+            <div class="dot">1</div>
+            <div class="info">
+              <h5>Enroll & Welcome</h5>
+              <p>Quick online registration and welcome orientation with the teacher and classmates.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="dot">2</div>
+            <div class="info">
+              <h5>Practical Lessons</h5>
+              <p>Hands-on sessions focused on building real projects and developing applied skills.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="dot">3</div>
+            <div class="info">
+              <h5>Project & Feedback</h5>
+              <p>Each learner completes a project and receives personalized feedback from the instructor.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="dot">4</div>
+            <div class="info">
+              <h5>Certificate</h5>
+              <p>Students receive a certificate and guidance for next steps and advanced courses.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ---------------- FAQ ---------------- -->
+    <h3 class="section-title" style="margin-top:1.6rem">Frequently Asked Questions</h3>
+    <div class="faq">
+      <details>
+        <summary>What is the age group for these courses?</summary>
+        <p>Each course shows the recommended age in its badge. We run separate beginner and advanced batches where needed.</p>
+      </details>
+
+      <details>
+        <summary>Can I enroll multiple students?</summary>
+        <p>Yes — use the contact form to register multiple students and we’ll reserve seats for your group.</p>
+      </details>
+
+      <details>
+        <summary>Do you offer certificates?</summary>
+        <p>Yes — every completed course includes a certificate and a small project to showcase learning.</p>
+      </details>
+    </div>
+
+  </main>
+
+  <footer>
+    © 2025 MDS International School — <a href="contact.html" style="color:#ffd48a">Contact Admissions</a>
+  </footer>
+
+</body>
+</html>

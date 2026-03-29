@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gallery | MDS International School</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:"Poppins",sans-serif;
+      background:#f5f7fa;
+      color:#222;
+    }
+
+    header{
+      background:#0057b8;
+      color:#fff;
+      text-align:center;
+      padding:2.25rem 1rem 1.5rem;
+      box-shadow:0 3px 12px rgba(0,0,0,0.12);
+    }
+    header h1{font-size:2.4rem;}
+    header p{color:#d9ebff;margin-top:.35rem;font-style:italic;}
+
+    nav{
+      background:#003e8b;
+      display:flex;
+      justify-content:center;
+      gap:1.2rem;
+      padding:.7rem 1rem;
+      position:sticky;top:0;z-index:10;
+    }
+    nav a{color:#fff;text-decoration:none;font-weight:600}
+    nav a.active,nav a:hover{color:#ffc107;text-decoration:underline}
+
+    main{max-width:1100px;margin:2rem auto;padding:0 1rem}
+    h2{text-align:center;color:#0057b8;font-size:2rem;margin-bottom:1.6rem}
+
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+      gap:1.25rem;
+    }
+
+    .gallery-item{
+      background:#fff;
+      border-radius:10px;
+      overflow:hidden;
+      box-shadow:0 6px 16px rgba(0,0,0,0.08);
+      transition:0.2s;
+      cursor:pointer;
+    }
+    .gallery-item:hover{
+      transform:translateY(-6px);
+      box-shadow:0 14px 30px rgba(0,0,0,0.15);
+    }
+    .gallery-item img{
+      width:100%;height:160px;object-fit:cover;display:block;
+    }
+    .caption{text-align:center;padding:.9rem;font-weight:600;color:#003e8b}
+
+    footer{
+      padding:1.2rem;background:#003e8b;color:white;text-align:center;margin-top:2rem;
+    }
+
+    /* -------- FULLSCREEN VIEWER -------- */
+    #viewer{
+      display:none;
+      position:fixed;top:0;left:0;width:100%;height:100%;
+      background:rgba(0,0,0,0.9);
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      z-index:9999;
+    }
+
+    #viewer img{
+      max-width:90%;max-height:80%;
+      object-fit:contain;
+      transition:transform 0.2s ease;
+      animation:fadeIn 0.25s ease;
+    }
+
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+    .viewer-btn{
+      position:absolute;
+      background:white;
+      color:#003e8b;
+      padding:10px 14px;
+      font-weight:700;
+      border-radius:8px;
+      cursor:pointer;
+      box-shadow:0 4px 12px rgba(0,0,0,0.4);
+      border:none;
+    }
+
+    #prevBtn{left:20px;top:50%;transform:translateY(-50%);}
+    #nextBtn{right:20px;top:50%;transform:translateY(-50%);}
+    #zoomIn{bottom:120px;left:50%;transform:translateX(-50%);}
+    #zoomOut{bottom:70px;left:50%;transform:translateX(-50%);}
+    #downloadBtn{
+      bottom:20px;
+      left:50%;
+      transform:translateX(-50%);
+      text-decoration:none;
+    }
+    #closeBtn{top:20px;right:20px;}
+
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>MDS International School</h1>
+  <p>"Empowering Young Minds to Create a Brighter Future"</p>
+</header>
+
+<nav>
+<a href="{{ url_for('home') }}">Home</a>
+<a href="{{ url_for('gallery') }}">Gallery</a>
+<a href="{{ url_for('courses') }}">Courses</a>
+<a href="{{ url_for('principal') }}">Principal</a>
+<a href="{{ url_for('contact') }}">Contact</a>
+<a href="{{ url_for('admin_login') }}">Admin</a>
+</nav>
+
+<main>
+  <h2>School Gallery</h2>
+  <div class="gallery-grid">
+
+{% for img in images %}
+
+<div class="gallery-item">
+<img src="{{ url_for('static', filename='images/' + img) }}">
+<div class="caption">{{ img.split('.')[0].replace('_',' ').title() }}</div>
+
+{% if logged_in %}
+<!-- <a href="/delete/{{ img }}" style="color:red;">Delete</a> -->
+{% endif %}
+
+</div>
+
+{% endfor %}
+
+</div>
+
+
+ 
+
+    <!-- YOUR ORIGINAL IMAGES
+    <div class="gallery-item"><img src="{{ url_for('static', filename='images/Assembly.jpg') }}" alt="">><div class="caption">Morning Assembly</div></div>
+    <div class="gallery-item"><img src="{{ url_for('static', filename='images/Classroom.jpg') }}"alt="" style="object-position:top"><div class="caption">Interactive Classroom</div></div>
+    <div class="gallery-item"><img src="{{ url_for('static', filename='images/Computer_lab.jpg') }}" alt=""><div class="caption">Cyber Space Room</div></div>
+    <div class="gallery-item"><img src="{{ url_for('static', filename='images/Independence_day.jpg') }}" alt=""><div class="caption">78th Independence Day</div></div>
+    <div class="gallery-item"><img src="{{ url_for('static', filename='images/Saraswati_puja.jpg') }}" alt=""><div class="caption">Saraswati Puja</div></div>
+    <div class="gallery-item"><img src="{{ url_for('static', filename='images/Janamashtami.jpg') }}" alt=""><div class="caption">Janamashtami</div></div>
+    <div class="gallery-item"><img src="{{ url_for('static', filename='images/Playground.jpg') }}" alt=""><div class="caption">Playground</div></div>
+    <div class="gallery-item"><img src="{{ url_for('static', filename='images/Arts.jpg') }}" alt=""><div class="caption">Arts & Craft</div></div>
+    <div class="gallery-item"><img src="{{ url_for('static', filename='images/Teachers.jpg') }}"alt=""><div class="caption">Our Faculties</div></div>
+    <div class="gallery-item"><img src="{{ url_for('static', filename='images/Class10girls.jpg') }}"alt=""><div class="caption">Rangoli Class 10 (Girls)</div></div>
+    <div class="gallery-item"><img src="{{ url_for('static', filename='images/Class10boys.jpg') }}" alt=""><div class="caption">Rangoli Class 10 (Boys)</div></div>
+    <div class="gallery-item"><img src="{{ url_for('static', filename='images/Class9.jpg') }}"alt=""><div class="caption">Diwali Highlights</div></div> -->
+
+  </div>
+</main>
+
+<footer>
+  © 2025 MDS International School — All Rights Reserved.
+</footer>
+
+<!-- -------- FULLSCREEN VIEWER -------- -->
+<div id="viewer">
+
+  <button class="viewer-btn" id="closeBtn">✖</button>
+  <button class="viewer-btn" id="prevBtn">⟨ Prev</button>
+  <button class="viewer-btn" id="nextBtn">Next ⟩</button>
+
+  <img id="viewerImg">
+
+  <button class="viewer-btn" id="zoomIn">Zoom +</button>
+  <button class="viewer-btn" id="zoomOut">Zoom −</button>
+  <a class="viewer-btn" id="downloadBtn" download>Download</a>
+
+</div>
+
+<script>
+let images = Array.from(document.querySelectorAll(".gallery-item img"));
+let current = 0;
+let zoom = 1;
+
+function openViewer(index){
+  current = index;
+  zoom = 1;
+  viewerImg.src = images[current].src;
+  downloadBtn.href = images[current].src;
+  viewer.style.display = "flex";
+  viewerImg.style.transform = "scale(1)";
+}
+
+function closeViewer(){
+  viewer.style.display="none";
+}
+
+function nextImg(){
+  current = (current + 1) % images.length;
+  openViewer(current);
+}
+
+function prevImg(){
+  current = (current - 1 + images.length) % images.length;
+  openViewer(current);
+}
+
+function zoomInImg(){
+  zoom += 0.2;
+  viewerImg.style.transform = "scale(" + zoom + ")";
+}
+
+function zoomOutImg(){
+  if(zoom > 0.4){
+    zoom -= 0.2;
+    viewerImg.style.transform = "scale(" + zoom + ")";
+  }
+}
+
+/* Swipe Support */
+let startX = 0;
+viewer.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+viewer.addEventListener("touchend", e => {
+  let endX = e.changedTouches[0].clientX;
+  if(endX - startX > 50) prevImg();
+  if(startX - endX > 50) nextImg();
+});
+
+/* Assign events */
+images.forEach((img, i)=>{
+  img.addEventListener("click",()=>openViewer(i));
+});
+
+closeBtn.onclick = closeViewer;
+nextBtn.onclick = nextImg;
+prevBtn.onclick = prevImg;
+zoomIn.onclick = zoomInImg;
+zoomOut.onclick = zoomOutImg;
+
+/* ESC close */
+document.addEventListener("keydown", e=>{
+  if(e.key === "Escape") closeViewer();
+});
+</script>
+
+</body>
+</html>

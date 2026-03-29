@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Courses</title>
+
+
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+
+</head>
+
+<body class="bg-gray-100 font-sans">
+
+
+<!-- HEADER -->
+<div class="bg-blue-600 text-white py-5 shadow-md">
+    <h1 class="text-center text-2xl font-bold">📚 My Courses</h1>
+</div>
+
+<!-- CONTAINER -->
+<div class="max-w-6xl mx-auto px-6 py-10">
+
+    <h2 class="text-2xl font-bold mb-1">
+        {{ student_email.split('@')[0] }}'s Courses 🎓
+      </h2>
+    <p class="text-gray-500 mb-6">Your Enrolled Courses</p>
+
+    <!-- GRID -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+
+        {% for course in courses %}
+
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition">
+
+            <!-- IMAGE -->
+            <img src="{{ course[6] }}"
+                 class="w-full h-48 object-cover">
+
+            <!-- CONTENT -->
+            <div class="p-5">
+
+                <h3 class="text-lg font-bold text-gray-800">
+                    {{ course[1] }}
+                </h3>
+
+                <p class="text-gray-600 text-sm mt-2">
+                    {{ course[5] }}
+                </p>
+
+                <p class="mt-3 text-sm">
+                    <span class="font-semibold">Duration:</span> {{ course[3] }}
+                </p>
+
+                <p class="text-blue-600 font-bold mt-1">
+                    ₹ {{ course[4] }}
+                </p>
+
+                <!-- BUTTON -->
+                <a href="/course/{{ course[0] }}">
+                    <button class="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+                        View Course
+                    </button>
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login | MDS International School</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #f5f7fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 1rem;
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 420px;
+      background: #ffffff;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      overflow: hidden;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .header {
+      background: #0057b8;
+      padding: 1.8rem 1rem;
+      text-align: center;
+      color: #fff;
+    }
+
+    .header h2 {
+      font-size: 1.45rem;
+      font-weight: 700;
+    }
+
+    .content {
+      padding: 1.6rem;
+    }
+
+    label {
+      font-weight: 600;
+      margin-bottom: 6px;
+      display: inline-block;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.85rem;
+      border: 1px solid #dcdcdc;
+      border-radius: 7px;
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+      transition: border-color 0.2s ease;
+    }
+    input:focus {
+      outline: none;
+      border-color: #0057b8;
+    }
+
+    .btn {
+      width: 100%;
+      background: #0057b8;
+      border: none;
+      padding: 0.85rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: background 0.25s ease;
+    }
+    .btn:hover {
+      background: #004a9e;
+    }
+
+    .back-link {
+      text-align: center;
+      display: block;
+      margin: 1.3rem 0 0.5rem;
+      text-decoration: none;
+      color: #0057b8;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: 0.2s ease;
+    }
+    .back-link:hover {
+      color: #003e7a;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-card">
+    <div class="header">
+      <h2>Admin Login<br>MDS International School</h2>
+    </div>
+
+    <div class="content">
+
+
+      <!-- I am now here writing logic for the login page bro................. -->
+      <form onsubmit="alert('Login system not connected yet'); return false;">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter username" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter password" required>
+
+        <button type="submit" class="btn">Sign In</button>
+      </form>
+
+     <a href="{{ url_for('home') }}" class="back-link">← Back to Home</a>
+    </div>
+  </div>
+  <form method="POST" action="{{ url_for('admin_login') }}">
+
+<label>Username</label>
+<input type="text" name="username" placeholder="Enter Username">
+
+<label>Password</label>
+<input type="password" name="password" placeholder="Enter Password">
+
+<button type="submit">Login</button>
+
+</form>
+
+</body>
+</html>

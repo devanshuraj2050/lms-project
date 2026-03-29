@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact - MDS International School</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f5f7fa;
+      color: #333;
+    }
+
+    header {
+      background: #0057b8;
+      color: white;
+      text-align: center;
+      padding: 2.5rem 1rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1rem;
+      font-style: italic;
+      color: #dfefff;
+    }
+
+    nav {
+      background: #003e8b;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      padding: 0.75rem 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s ease;
+      font-size: 1rem;
+    }
+
+    nav a:hover {
+      color: #ffc107;
+    }
+
+    .section {
+      padding: 3rem 1rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .section h2 {
+      color: #0057b8;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    .section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      text-align: justify;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: #003e8b;
+      color: white;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      header p {
+        font-size: 0.95rem;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+
+      .section {
+        padding: 2rem 1rem;
+      }
+
+      .section h2 {
+        font-size: 1.6rem;
+      }
+
+      .section p {
+        font-size: 1rem;
+      }
+
+      footer {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>MDS International School</h1>
+    <p>"Empowering Young Minds to Create a Brighter Future"</p>
+  </header>
+
+  <nav>
+  <a href="{{ url_for('home') }}">Home</a>
+  <a href="{{ url_for('home') }}#facilities">Facilities</a>
+  <a href="{{ url_for('gallery') }}">Gallery</a>
+  <a href="{{ url_for('courses') }}">Courses</a>
+  <a href="{{ url_for('contact') }}">Contact</a>
+  <a href="{{ url_for('principal') }}">Principal</a>
+  <a href="{{ url_for('my_courses') }}">My Courses</a>
+  <a href="/signup">Sign Up</a>
+  <a href="{{ url_for('admin_login') }}">Admin</a>
+
+</nav>
+</nav>
+
+
+  <section class="section" id="contact">
+    <h2>Contact Us</h2>
+    <p><strong>Email:</strong> mdsinternationalschool@gmail.com</p>
+    <p><strong>Phone:</strong> +9107004618831-</p>
+    <p><strong>Address:</strong> B/135,PC Colony Rd, Housing Board Colony, Kankarbagh, Patna,Bihar - 800020</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 MDS International School. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>

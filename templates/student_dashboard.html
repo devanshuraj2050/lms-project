@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Dashboard</title>
+
+<style>
+body{
+  font-family: Arial;
+  background:#f5f7fa;
+  margin:0;
+}
+
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:30px;
+}
+
+h2{
+  margin-bottom:20px;
+}
+
+.stats{
+  display:flex;
+  gap:20px;
+  margin-bottom:30px;
+}
+
+.card{
+  flex:1;
+  background:white;
+  padding:20px;
+  border-radius:10px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+.course-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+  gap:20px;
+}
+
+.course-card{
+  background:white;
+  padding:15px;
+  border-radius:10px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+.btn{
+  display:inline-block;
+  padding:8px 12px;
+  background:#2c5cc5;
+  color:white;
+  text-decoration:none;
+  border-radius:5px;
+  margin-top:10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Welcome {{ student_email.split('@')[0] }} 👋</h2>
+
+<!-- Stats -->
+<div class="stats">
+  <div class="card">
+    <h3>📚 Enrolled Courses</h3>
+    <p style="font-size:24px;">{{ total_courses }}</p>
+  </div>
+</div>
+
+<!-- Courses Section -->
+<h3>My Courses</h3>
+
+<div class="course-grid">
+
+{% for course in courses [:3] %}
+
+<div class="course-card">
+    <!-- IMAGE ADDED HERE -->
+  <img src="{{ course[6] }}" 
+  style="width:100%; height:150px; object-fit:cover; border-radius:8px;">
+
+  <h4 style="margin-top:10px;">{{ course[1] }}</h4>
+  <p>{{ course[5] }}</p>
+  <p><strong>Duration:</strong> {{ course[3] }}</p>
+
+  <a href="/course/{{ course[0] }}" class="btn">View Course</a>
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+</body>
+</html>
